@@ -1,4 +1,4 @@
-from app import hitung_total_sks, validasi_krs
+from app import hitung_total_sks, validasi_krs, simpan_krs, DATA_KRS
 
 
 def test_total_sks():
@@ -23,3 +23,9 @@ def test_krs_ganda():
 def test_krs_melebihi_batas():
     data = [{"kode": str(i), "sks": 5} for i in range(5)]
     assert validasi_krs(data)[0] is False
+
+
+def test_simpan_krs():
+       data = [{"kode": "A", "sks": 3}]
+       assert simpan_krs("248160066", data)[0] is True
+       assert "248160066" in DATA_KRS
